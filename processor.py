@@ -39,7 +39,7 @@ def process_code_tag_content(code):
     code = re.sub(re.compile("^[ ]{,2}[\d]*", re.S+re.M), '', code)
     return code
 
-def get_tag_codes(page):
+def get_intag_codes(page):
     expr = '<pre.*?>(.*?)</pre>|<code.*?>(.*?)</code>'
     codes = re.findall(re.compile(expr, re.S), page)
     res = []
@@ -50,7 +50,7 @@ def get_tag_codes(page):
 
 
 def getcodes(page):
-    return (get_crayon_codes(page) + get_tag_codes(page))
+    return (get_crayon_codes(page) + get_intag_codes(page))
 
 def gettitle(page):
     expr = '<title>.*?</title>'
