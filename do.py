@@ -27,6 +27,7 @@ while True:
     code = a.solve(pid)
     if code != 0:
         print "cant solve problem %d, ErrorCode: %d" % (pid, code)
+        pid = pid + 1
         continue
     pid = pid + 1
     time.sleep(interval)
