@@ -11,4 +11,3 @@ def getpage(url):
     response = urllib2.urlopen(request)
     if NETWORK_SPEED_TEST: print "data recieved"
     return response.read()
-
