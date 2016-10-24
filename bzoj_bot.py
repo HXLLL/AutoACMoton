@@ -47,7 +47,12 @@ class BZOJBot:
         print 'judging...'
         page = self.opener.open(url).read()
         statu = processor.getfirstresult(page)
+        cnt = 0
         while not re.match(expr_status_f, statu):
+            ++cnt
+            if(cnt>130):
+                statu = ''
+                break
             time.sleep(1)
             page = self.opener.open(url).read()
             statu = processor.getfirstresult(page)

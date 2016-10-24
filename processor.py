@@ -29,7 +29,6 @@ pattern_process_intag_code_content_1 = re.compile('</div>')
 pattern_process_intag_code_content_2 = re.compile('<.*?>')
 pattern_process_intag_code_content_3 = re.compile('(?sm)^[ ]{,2}[\d]*')
 def process_intag_code_content(code):
-    print code
     code = re.sub(pattern_process_intag_code_content_1, '\n', code)
     code = re.sub(pattern_process_intag_code_content_2, '', code)
     code = re.sub(pattern_process_intag_code_content_3, '', code)
@@ -40,7 +39,9 @@ def get_intag_codes(page):
     codes = re.findall(pattern_get_intag_codes, page)
     res = []
     for code in codes:
-        t = html_ESC_decode(process_intag_code_content(code))
+        t = html_ESC_decode(process_intag_code_content(code[0]))
+        if identify.iscpp(t): res.append(t)
+        t = html_ESC_decode(process_intag_code_content(code[1]))
         if identify.iscpp(t): res.append(t)
     return res
 
