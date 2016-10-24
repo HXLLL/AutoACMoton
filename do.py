@@ -4,11 +4,8 @@ import time
 
 import auto_ACmoton
 
-start_pid = 1000
-interval = 30*60
-
 try:
-    options,args = getopt.getopt(sys.argv[1:], 's:t:', ['start=', 'interval='])
+    options,args = getopt.getopt(sys.argv[1:], 'hs:t:', ['help', 'start=', 'interval='])
 except getopt.GetoptError:
     sys.exit()
 
@@ -30,4 +27,6 @@ while True:
         pid = pid + 1
         continue
     pid = pid + 1
-    time.sleep(interval)
+    for i in range(interval):
+        a.sendheartbeat()
+        time.sleep(60)

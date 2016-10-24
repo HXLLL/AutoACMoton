@@ -17,6 +17,10 @@ class AutoACMoton:
         if not DEBUG:
             self.contestant.logout()
 
+    def sendheartbeat():
+        if not DEBUG:
+            self.contestant.sendheartbeat()
+
     ACCESS_DENIED = 1; CANT_FIND_SOLUTIONS = 2; CANT_SUBMIT = 3;
     def solve(self, pid):
         if not self.contestant.can_submit_code(pid):

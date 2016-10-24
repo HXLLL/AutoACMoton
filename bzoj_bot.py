@@ -25,6 +25,9 @@ class BZOJBot:
     def logout(self):
         logouturl = 'http://www.lydsy.com/JudgeOnline/logout.php'
         self.opener.open(logouturl)
+    
+    def sendheartbeat(self):
+        self.opener.open('http://www.lydsy.com/JudgeOnline/')
 
     def submit_code(self, pid, code):
         submiturl = 'http://www.lydsy.com/JudgeOnline/submit.php'
