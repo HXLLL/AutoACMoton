@@ -21,7 +21,7 @@ class AutoACMoton:
     def solve(self, pid):
         if not self.contestant.can_submit_code(pid):
             print "Please contact lydsy2012@163.com!"
-            return ACCESS_DENIED
+            return self.ACCESS_DENIED
 
         sols = grab.grab_from_baidu_page("bzoj%d" % pid)
         print 'got solution list'
@@ -35,7 +35,7 @@ class AutoACMoton:
             else:
                 response = self.contestant.submit_code(pid, sol_code['code'][0])
                 result = self.contestant.getresult(pid)
-                if result == '': return CANT_SUBMIT
+                if result == '': return self.CANT_SUBMIT
                 print "solution%d: %s" % (sid+1, result)
                 if result == 'Accepted':
                     source_file = open("bzoj/P%d.cpp" % pid, "w")
@@ -43,4 +43,4 @@ class AutoACMoton:
                     source_file.close()
                     return 0
                 time.sleep(6)
-        return CANT_FIND_SOLUTIONS
+        return self.CANT_FIND_SOLUTIONS
